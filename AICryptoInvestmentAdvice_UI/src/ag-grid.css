@@ -1,0 +1,12 @@
+.ag-theme-material{
+    --ag-header-background-color: rgba(198, 202, 117, 0.89);
+    --ag-background-color: rgb(240, 233, 205);
+    --ag-odd-row-background-color: rgb(219, 209, 170);
+    --ag-font-size: 12px;
+    --ag-font-family: Courier;
+}
+
+.ag-theme-material .ag-header{
+    font-weight: bold;
+    font-size: 12px;
+}
