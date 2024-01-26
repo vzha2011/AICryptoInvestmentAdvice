@@ -1,7 +1,7 @@
 # AI Crypto Investment Advice
 This is an application built with React, Java, Spring Boot, The News API, and OpenAI Chat API to generate crypto investment advice.
 
-User could sign up, log in, and view the history of the advice generated. 
+Users could sign up, log in, and view the history of the advice generated. 
 
 Working to backtest the investment advice with historical crypto prices.
 
