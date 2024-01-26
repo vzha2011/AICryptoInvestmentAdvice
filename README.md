@@ -13,11 +13,11 @@ Users need to sign up for the accounts in OpenAI and The News API websites to ob
 1. OpenAI Chat API: https://platform.openai.com/api-keys
    
    gpt-3.5-turbo model is currently used for testing.
-   Model and the API key can be edited on the application.properties file.
+   Model and the API key can be edited on the application.properties file in the resources folder.
   
 2. The News API: https://www.thenewsapi.com
    
-   API key can be edited on the application.properties file.
+   API key can be edited on the application.properties file in the resources folder.
 
 # Example
 ![project 3](https://github.com/vzha2011/AICryptoInvestmentAdvice/assets/93365293/0d533f47-ed2d-4634-9629-bff2081937ff)
