@@ -3,19 +3,21 @@ This is an application built with React, Java, Spring Boot, The News API, and Op
 
 User could log in and view the history of the advice generated. 
 
+Working to backtest the investment advice with historical crypto prices.
+
 # Prompt
-The prompt used for OpenAI Chat API consists of current crypto prices, purchase quantity, purchase price, year of purchasing crypto, target price, target year, and the recent news titles related to the crypto as key elements
+The prompt used for OpenAI Chat API consists of current crypto prices, purchase quantity, purchase price, year of purchasing crypto, target price, target year, and the recent news titles related to the crypto as key elements.
 
 # API Keys
 Users need to sign up for the accounts in OpenAI and The News API websites to obtain the API keys.
 1. OpenAI Chat API: https://platform.openai.com/api-keys
    
    gpt-3.5-turbo model is currently used for testing.
-   Model and the API key can be edited on the application.properties file
+   Model and the API key can be edited on the application.properties file.
   
 2. The News API: https://www.thenewsapi.com
    
-   API key can be edited on the application.properties file
+   API key can be edited on the application.properties file.
 
 # Example
 ![project 3](https://github.com/vzha2011/AICryptoInvestmentAdvice/assets/93365293/0d533f47-ed2d-4634-9629-bff2081937ff)
