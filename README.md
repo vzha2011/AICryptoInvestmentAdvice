@@ -3,7 +3,7 @@ This is an application built with React, Java, Spring Boot, CoinGecko API, The N
 
 Users could sign up, log in, and view the history of the advice generated. 
 
-Note: the available options for exchange selection are the exchanges that support crypto selected / USD pair. If no exchanges are available, the market price will be displayed.
+Note: The available options for exchange selection are the exchanges that support crypto selected / USD pair. If no exchanges are available, the market price will be displayed.
 
 Working to backtest the investment advice with historical crypto prices.
 
