@@ -3,14 +3,19 @@ package com.project.AICryptoInvestmentAdvice.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.AICryptoInvestmentAdvice.dto.*;
 import com.project.AICryptoInvestmentAdvice.entity.AdviceRecord;
+import com.project.AICryptoInvestmentAdvice.qa.util.FileBufferedReaders;
 import com.project.AICryptoInvestmentAdvice.service.AdviceService;
 import com.project.AICryptoInvestmentAdvice.service.UserService;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
+import java.io.IOException;
 import java.util.List;
 @CrossOrigin
 @RestController
@@ -53,5 +58,10 @@ public class UserController {
     }
 
 
+    @GetMapping(value="/aicryptoinvestmentadvice/cryptonames", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<String> getCryptoNames() throws IOException, ParseException {
+        JSONArray jsonArray = (JSONArray) new JSONParser().parse(new FileBufferedReaders().getCryptoNames());
+        return new ResponseEntity<>(jsonArray.toString(), HttpStatus.OK);
+    }
 
 }
