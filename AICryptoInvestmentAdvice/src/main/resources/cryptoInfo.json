@@ -1,0 +1,78 @@
+{
+  "cryptoInfo":[
+    {
+      "name": "bitcoin",
+      "exchange": "kraken",
+      "purchaseQuantity": "1",
+      "purchasePrice": "15000",
+      "purchaseYear": "2023",
+      "currentPrice": "60000",
+      "currentDate": "2024-03-10",
+      "targetPrice": "100000",
+      "targetYear": "2024",
+      "userName": "user565656"
+    },
+    {
+      "name": "bitcoin",
+      "exchange": "gdax",
+      "purchaseQuantity": "2",
+      "purchasePrice": "15000",
+      "purchaseYear": "2023",
+      "currentPrice": "60000",
+      "currentDate": "2024-03-10",
+      "targetPrice": "100000",
+      "targetYear": "2024",
+      "userName": "user565656"
+    },
+    {
+      "name": "aave",
+      "exchange": "kraken",
+      "purchaseQuantity": "100",
+      "purchasePrice": "126.65",
+      "purchaseYear": "2023",
+      "currentPrice": "100",
+      "currentDate": "2024-03-10",
+      "targetPrice": "200",
+      "targetYear": "2024",
+      "userName": "user5656"
+    },
+    {
+      "name": "ethereum",
+      "exchange": "kraken",
+      "purchaseQuantity": "10",
+      "purchasePrice": "2000",
+      "purchaseYear": "2023",
+      "currentPrice": "3500",
+      "currentDate": "2024-03-10",
+      "targetPrice": "5000",
+      "targetYear": "2024",
+      "userName": "user"
+    },
+    {
+      "name": "gala",
+      "exchange": "kraken",
+      "purchaseQuantity": "10000",
+      "purchasePrice": "0.01",
+      "purchaseYear": "2023",
+      "currentPrice": "0.008",
+      "currentDate": "2024-03-10",
+      "targetPrice": "0.2",
+      "targetYear": "2024",
+      "userName": "user123"
+    },
+    {
+      "name": "ethereum-classic",
+      "exchange": "crypto_com",
+      "purchaseQuantity": "100",
+      "purchasePrice": "20",
+      "purchaseYear": "2023",
+      "currentPrice": "10",
+      "currentDate": "2024-03-10",
+      "targetPrice": "100",
+      "targetYear": "2024",
+      "userName": "user"
+    }
+
+
+  ]
+}
