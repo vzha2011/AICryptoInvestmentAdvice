@@ -17,10 +17,10 @@ export default function HomePage(){
     const [purchasePrice, setPurchasePrice] = useState(0)
     const [quantity, setQuantity] = useState(1)
     const [totalPurchasePrice, setTotalPurchasePrice] = useState("")
-    const [purchaseYear, setPurchaseYear] = useState(2023)
+    const [purchaseYear, setPurchaseYear] = useState()
     const currentDate = new Date()
     const [targetPrice, setTargetPrice] = useState(0)
-    const [targetYear, setTargetYear] = useState(2024)
+    const [targetYear, setTargetYear] = useState()
     const [generateAdvice, setGenerateAdvice] = useState(false) 
     const [aiAdvice, setAIAdvice] = useState("")
     const [openLogInDialog, setOpenLogInDialog] = useState(false)
@@ -36,8 +36,9 @@ export default function HomePage(){
 
     useEffect(() => {
         async function fetchCryptoNames() {
-            if(cryptoNames.length === 0){
-                const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/list");
+            if(validUser&&cryptoNames.length === 0){
+                // const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/list");
+                const {data} = await axios.get("http://localhost:8856/aicryptoinvestmentadvice/cryptonames");
                 const resultList = []
                 data.forEach((value) => {
                     resultList.push(value.id)   
@@ -46,7 +47,7 @@ export default function HomePage(){
             }
         }
         fetchCryptoNames();
-    },[cryptoNames]);
+    },[validUser,cryptoNames]);
 
     useEffect(() => {
         async function fetchExchanges(){
@@ -95,8 +96,6 @@ export default function HomePage(){
                 data["tickers"].forEach((value) => {
                     if(value.coin_id === cryptoNameSelected && value.target=== "USD"){                       
                         setCurrentPrice(value.last)
-                        setPurchasePrice(value.last)
-                        setTargetPrice(value.last)
                         return;
                     }
                 });
@@ -117,6 +116,7 @@ export default function HomePage(){
  
     useEffect(() => {
         async function createUser() {
+            
             if(signUpButtonClicked && userName !== "" && password !== ""){
                 const userInfo  = {
                     userName: userName,
@@ -165,7 +165,7 @@ export default function HomePage(){
             setLogInButtonClicked(false)
         }
         validateUser()
-    }, [logInButtonClicked, userName, password, validUser]);
+    }, [logInButtonClicked]);
 
     useEffect( () => {
         async function fetchAiAdvice() {
@@ -185,6 +185,7 @@ export default function HomePage(){
                         targetYear: targetYear,
                         userName: userName
                     }
+                    console.log(cryptoInfo)
                     const {data} = await axios({
                     method: 'post',
                     url: 'http://localhost:8856/aicryptoinvestmentadvice/advice',
@@ -295,8 +296,8 @@ export default function HomePage(){
             </View>
 
             <View >
-            {!validUser && <button style={{backgroundColor: "white", width: 50, height: 30}} onClick={handleOpenLogInDialog}>log in</button>}
-                    <Dialog onClose={handleCloseDialog} open={openLogInDialog}>
+            {!validUser && <button style={{backgroundColor: "white", width: 50, height: 30}} id="loginButton" onClick={handleOpenLogInDialog}>log in</button>}
+                    <Dialog onClose={handleCloseDialog} open={openLogInDialog} id="logInPanel">
                         <DialogContent>
                             <div>
                             <TextField label="name" onChange={handleUserName} fullWidth/>
@@ -305,14 +306,14 @@ export default function HomePage(){
                             </div>
                         </DialogContent>
                         <DialogActions>
-                            <Button variant="contained" color="primary" onClick={handleSignUp}>Sign up</Button>
-                            <Button variant="contained" color="primary" onClick={handleLogIn}>Log In</Button>
+                            <Button variant="contained" color="primary" id="signUpButton" onClick={handleSignUp}>Sign up</Button>
+                            <Button variant="contained" color="primary" id="signInButton" onClick={handleLogIn}>Log In</Button>
                         </DialogActions>
                     </Dialog>
             {validUser && 
             <div>
-                {userName!==null && <label style={{fontSize: 20}}>Hello, {userName}!</label>}
-                <AccountCircleOutlinedIcon style={{width: 50, height: 50}} onClick={handleProfileMenu}/>
+                {userName!==null && <label name="welcomeMsg" style={{fontSize: 20}}>Hello, {userName}!</label>}
+                <AccountCircleOutlinedIcon style={{width: 50, height: 50}} id="userProfile" onClick={handleProfileMenu}/>
                 <Menu open={Boolean(anchorEl)} onClose={handleCloseMenu}  anchorEl={anchorEl} >
                     <MenuItem component={Link} to= {"/userhistory/"+userName}>
                     <label>History</label> <HistoryOutlinedIcon/>
@@ -350,7 +351,7 @@ export default function HomePage(){
                 
                 <div>
                     <label>Purchase Price(USD): </label>
-                    <input type = "number" onChange= {handlePurchasePrice} defaultValue = {purchasePrice} key={purchasePrice}/>
+                    <input type = "number" onChange= {handlePurchasePrice} defaultValue = {purchasePrice} />
                 </div>  
 
                 <div>
@@ -365,7 +366,7 @@ export default function HomePage(){
                 </div>    
 
                 <div>
-                    <label>Purchase Year: </label>
+                    <label>Year of Purchase: </label>
                     <input type = "number" onChange= {handlePurchaseYear} defaultValue = {purchaseYear}/>
                 </div>  
                    
@@ -382,7 +383,7 @@ export default function HomePage(){
 
                 <div>
                     <label>Target Price(USD): </label>
-                    <input type = "number" onChange={handleTargetPrice} defaultValue={targetPrice} key={targetPrice}/>
+                    <input type = "number" onChange={handleTargetPrice} defaultValue={targetPrice}/>
                 </div>
 
                 <div>
@@ -390,7 +391,7 @@ export default function HomePage(){
                     <input type = "number" onChange={handleTargetYear} defaultValue={targetYear}/>
                 </div>
                 <div>
-                    <button onClick={handleGenerateAIAdvice} style={{backgroundColor: "white", width: 250, height: 20}}>Generate AI Investment Advice</button>
+                    <button onClick={handleGenerateAIAdvice} id="generateAdviceButton" style={{backgroundColor: "white", width: 250, height: 20}}>Generate AI Investment Advice</button>
                     <Dialog open={openAlertDialog} onClose={handleCloseAlertDialog}>
                         <DialogContent>
                             <label>Please log in</label>
