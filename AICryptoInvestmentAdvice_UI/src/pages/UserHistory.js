@@ -27,7 +27,7 @@ export default function UserHistory(){
         {field: "Price"},
         {field: "Target Price(USD)"},
         {field: "Target Year"},
-        {field: "New Titles",
+        {field: "News Titles",
          cellRenderer: ButtonCellRenderer,
          cellRendererParams: {
             clicked: function (){
@@ -63,7 +63,7 @@ export default function UserHistory(){
                         "Price": record.currentPrice,
                         "Target Price(USD)": record.targetPrice,
                         "Target Year": record.targetYear,
-                        "New Titles": record.newsTitles,
+                        "News Titles": record.newsTitles,
                         "AI Investment Advice": record.aiAdvice
                     }));
                 setRowData(res)
